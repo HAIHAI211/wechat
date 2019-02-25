@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("")
 @Slf4j
-public class TestController {
+public class WxController {
     @GetMapping("")
     public String init(String signature, String timestamp, String nonce, String echostr) throws AesException {
-        log.info("hehe");
         WeChatUtils.verifyUrl(signature,timestamp,nonce);
         return echostr;
     }
-    @GetMapping("/next")
+
+    /**
+    *返回结果必须是一个页面，写到restcontroller里，只是为了突出获取openId的目的性，最终必须返回页面给客户端
+    * */
+    @GetMapping("/getOpenId")
     public String next(String code) throws Exception{
         log.info("code", code);
         WeChatAccessTokenInfo weChatAccessTokenInfo = HttpUtils.fetchOpenId(code);
