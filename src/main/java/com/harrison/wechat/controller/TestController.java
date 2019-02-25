@@ -1,7 +1,9 @@
 package com.harrison.wechat.controller;
 
 
+import com.harrison.wechat.dto.WeChatAccessTokenInfo;
 import com.harrison.wechat.exception.AesException;
+import com.harrison.wechat.utils.HttpUtils;
 import com.harrison.wechat.utils.ResultVoUtils;
 import com.harrison.wechat.utils.WeChatUtils;
 import com.harrison.wechat.vo.ResultVo;
@@ -20,5 +22,11 @@ public class TestController {
         log.info("hehe");
         WeChatUtils.verifyUrl(signature,timestamp,nonce);
         return echostr;
+    }
+    @GetMapping("/next")
+    public String next(String code) throws Exception{
+        log.info("code", code);
+        WeChatAccessTokenInfo weChatAccessTokenInfo = HttpUtils.fetchOpenId(code);
+        return "该用户的openid是：" + weChatAccessTokenInfo.getOpenId();
     }
 }
