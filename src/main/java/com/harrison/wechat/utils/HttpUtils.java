@@ -32,6 +32,5 @@ public class HttpUtils {
         // ResponseEntity<WeChatAccessTokenInfo> responseEntity = getRestTemplate().getForEntity(url, WeChatAccessTokenInfo.class, map);
         return getRestTemplate().getForObject(url
                 , WeChatAccessTokenInfo.class,map);
-
     }
 }
