@@ -10,7 +10,7 @@ public class WxMappingJackson2HttpMessageConverter extends MappingJackson2HttpMe
     public WxMappingJackson2HttpMessageConverter(){
         List<MediaType> mediaTypes = new ArrayList<>();
         mediaTypes.add(MediaType.TEXT_PLAIN);
-        setSupportedMediaTypes(mediaTypes);// tag6
+        setSupportedMediaTypes(mediaTypes);
     }
 }
 
